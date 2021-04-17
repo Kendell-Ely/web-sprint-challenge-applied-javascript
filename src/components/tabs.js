@@ -26,7 +26,7 @@ allTopics.classList.add('topics')
 
  tab.textContent = topics
 
-console.log(allTopics)
+//console.log(allTopics)
 
 return allTopics
 }
