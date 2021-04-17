@@ -30,7 +30,7 @@ artDate.textContent = date
 artTitle.textContent = title
 theTemp.textContent = temp
 
-console.log(headerContainer)
+//console.log(headerContainer)
 return headerContainer
 
 }
@@ -47,7 +47,5 @@ const entry = document.querySelector(selector)
 entry.appendChild(Header('The News', '4/16', '39°'))
 
 }
-
-headerAppender('.header-container')
 
 export { Header, headerAppender }
