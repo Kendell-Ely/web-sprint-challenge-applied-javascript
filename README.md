@@ -85,4 +85,3 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 5. What is a component?
     a standalone piece of code that is reusable
 
-testing push
