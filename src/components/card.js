@@ -1,4 +1,6 @@
-const Card = (article) => {
+import axios from "axios"
+
+const Card = ({headline, authorName, authorPhoto}) => {
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -17,8 +19,41 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-}
+  
+  const card = document.createElement('div')
+  const artHeadline = document.createElement('div')
+  const artAuthor = document.createElement('div')
+  const imgContainer = document.createElement('div')
+  const authorImg = document.createElement('img')
+  const author = document.createElement('span')
 
+  card.appendChild(artHeadline)
+  card.appendChild(artAuthor)
+  artAuthor.appendChild(imgContainer)
+  imgContainer.appendChild(authorImg)
+  artAuthor.appendChild(author)
+
+  card.classList.add('card')
+  artHeadline.classList.add('headline')
+  artAuthor.classList.add('author')
+  imgContainer.classList.add('img-container')
+
+  artHeadline.textContent = headline
+  authorImg.src = authorPhoto
+  author.textContent = authorName
+
+card.addEventListener('click', () => {
+  console.log(artHeadline.textContent)
+})
+
+  console.log(card)
+
+return card
+
+
+
+}
+//Card()
 const cardAppender = (selector) => {
   // TASK 6
   // ---------------------
@@ -28,6 +63,38 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+
+const entry = document.querySelector(selector)
+
+axios.get(`https://lambda-times-api.herokuapp.com/articles`)
+  .then(({data}) => {
+    console.log(data.articles)
+    data.articles.javascript.forEach((article) => {
+      entry.appendChild(Card(article))
+    });
+
+    data.articles.bootstrap.forEach((article) => {
+      entry.appendChild(Card(article))
+    });
+
+    data.articles.technology.forEach((article) => {
+      entry.appendChild(Card(article))
+    });
+
+    data.articles.jquery.forEach((article) => {
+      entry.appendChild(Card(article))
+    });
+
+    data.articles.node.forEach((article) => {
+      entry.appendChild(Card(article))
+    })
+   
+  })
+
+
+
+
+
 }
 
 export { Card, cardAppender }
